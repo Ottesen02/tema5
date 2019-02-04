@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+
+
+
+    <script>
+        function hilsen() {
+            let date = new Date();
+            let hour = date.getHours();
+            if (hour > 5 && hour < 10) {
+                return alert `Godmorgen`
+            } else if (hour > 10 && hour < 18) {
+                return alert `Goddag`
+            } else if (hour > 18 && hour < 24) {
+                return alert `Godaften`
+            } else if (hour > 0 && hour < 5)
+                return alert `Godnat`
+        }
+
+        alert(hilsen());
+
+    </script>
+</body>
+
+</html>
