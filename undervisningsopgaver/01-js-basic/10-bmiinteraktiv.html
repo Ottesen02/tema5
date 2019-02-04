@@ -10,29 +10,52 @@
 
 <body>
     <script>
-        confirm(beregn());
-        if (confirm) {
-            location.reload();
-        }
+        alert(beregn());
 
         function beregn() {
             let vægt = prompt("Indtast din vægt kg");
-            let højde = prompt("Indtast din højde i meter");
+            let højde = prompt("Indtast din højde i cm") / 100;
             let bmi = vægt / (højde * højde);
             if (bmi == 0) {
                 return (`Der skete en fejl prøv igen.`)
+            } else if (isNaN(bmi)) {
+                return (`Du må have tastet forkert, prøv igen`)
             } else if (bmi <= 19) {
-                return (`BMI'en er ${bmi}, fedmeklasse: undervægtig\nHar du brug for at beregne et nyt BMI?`)
-            } else if (bmi >= 20 && bmi < 25) {
-                return (`BMI'en er ${bmi}, fedmeklasse: Normal\nHar du brug for at beregne et nyt BMI?`)
+                confirm(`BMI'en er ${bmi}\nVil du se din Fedmeklasse?`)
+                if (confirm) {
+                    alert(`fedmeklasse: undervægtig\nHar du brug for at beregne et nyt BMI?`)
+                    location.reload();
+                }
+            } else if (bmi >= 20 && bmi <= 25) {
+                confirm(`BMI'en er ${bmi}\nVil du se din Fedmeklasse?`)
+                if (confirm) {
+                    alert(`fedmeklasse: Normal\nHar du brug for at beregne et nyt BMI?`)
+                    location.reload();
+                }
             } else if (bmi > 25 && bmi < 30) {
-                return (`BMI'en er ${bmi}, fedmeklasse: Overvægtig\nHar du brug for at beregne et nyt BMI?`)
+                confirm(`BMI'en er ${bmi}\nVil du se din Fedmeklasse?`)
+                if (confirm) {
+                    alert(`fedmeklasse: Overvægtig\nHar du brug for at beregne et nyt BMI?`)
+                    location.reload();
+                }
             } else if (bmi > 30 && bmi < 35) {
-                return (`BMI'en er ${bmi}, fedmeklasse: Fed\nHar du brug for at beregne et nyt BMI?`)
+                confirm(`BMI'en er ${bmi}\nVil du se din Fedmeklasse?`)
+                if (confirm) {
+                    alert(`fedmeklasse: Fed\nHar du brug for at beregne et nyt BMI?`)
+                    location.reload();
+                }
             } else if (bmi > 35 && bmi < 40) {
-                return (`BMI'en er ${bmi}, fedmeklasse: Svær fedme\nHar du brug for at beregne et nyt BMI?`)
+                confirm(`BMI'en er ${bmi}\nVil du se din Fedmeklasse?`)
+                if (confirm) {
+                    alert(`fedmeklasse: Svær Fedme\nHar du brug for at beregne et nyt BMI?`)
+                    location.reload();
+                }
             } else if (bmi > 40) {
-                return (`BMI'en er ${bmi}, fedmeklasse: Ekstremt fed \nHar du brug for at beregne et nyt BMI?`)
+                confirm(`BMI'en er ${bmi}\nVil du se din Fedmeklasse?`)
+                if (confirm) {
+                    alert(`fedmeklasse: Ekstremt fed\nHar du brug for at beregne et nyt BMI?`)
+                    location.reload();
+                }
             }
 
         }
