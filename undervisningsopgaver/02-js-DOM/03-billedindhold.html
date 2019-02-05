@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>02 Indhold</title>
+    <style>
+        #firkant {
+            height: 100px;
+            width: 100px;
+            background-color: green;
+            text-align: center;
+            line-height: 100px;
+
+        }
+
+        #cirkel {
+            height: 100px;
+            width: 100px;
+            background-color: red;
+            border-radius: 50%;
+            line-height: 100px;
+            text-align: center;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="firkant"></div>
+    <div id="cirkel"></div>
+
+
+    <script>
+        let firkant = document.querySelector("#firkant");
+        let cirkel = document.querySelector("#cirkel");
+
+        let firkantURL = "http://helf-kea.dk/test/frog.png";
+        let cirkelURL = `http://helf-kea.dk/test/gris.png`;
+
+
+        firkant.innerHTML = `<img src=${firkantURL} alt="grøn frø">`;
+        cirkel.innerHTML = `<img src=${cirkelURL} alt="lyserød gris">`;
+    </script>
+</body>
+
+</html>
