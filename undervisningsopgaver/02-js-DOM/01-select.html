@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Select</title>
+    <link rel="stylesheet" href="">
+</head>
+
+
+<body>
+
+
+    <div id="content">
+        <div><a href="http://www.kea.dk">KEA's Hjemmeside</a></div>
+        <div><a href="https://github.com/Ottesen02">Min Github side</a></div>
+        <div><img src="http://helf-kea.dk/test/frog.png" alt="en grøn frø"></div>
+    </div>
+
+
+
+    <script>
+        let contentContainer = document.querySelector("#content");
+        console.log(contentContainer);
+
+        let div1 = document.querySelector("#content div");
+        console.log(div1);
+
+        let div2 = document.querySelector("#content div + div");
+        console.log(div2);
+
+        let div3 = document.querySelector("#content div + div + div");
+        console.log(div3);
+
+        let link1 = document.querySelector("#content div a");
+        console.log(link1);
+
+        let link2 = document.querySelector("#content div + div a");
+        console.log(link2);
+
+        let billede = document.querySelector("#content div img");
+        console.log(billede);
+    </script>
+</body>
+
+</html>
