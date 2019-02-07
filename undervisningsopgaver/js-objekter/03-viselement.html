@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01 Objekt</title>
+    <link rel="stylesheet" href="">
+</head>
+
+<body>
+
+    <div id="dyr">
+        <h2></h2>
+        <img src="" alt="" width="300px">
+        <p>Type:</p>
+        <p>Levested:</p>
+    </div>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start)
+        console.log(start)
+
+        function start() {
+            let dyr = {
+                "navn": "Løve",
+                "type": "Pattedyr",
+                "billede": "https://odensezoo.azureedge.net/3/6/5/5/4/d/36554d396569df60af453d2b173500442ce5c368.jpg",
+                "levested": "Afrika"
+            }
+
+            let Navn = `Dyr: ${dyr.navn}, Type:${dyr.type}, Levested:${dyr.levested}`
+
+            const div = document.querySelector("#dyr");
+
+            div.querySelector("h2").textContent = dyr.navn;
+            div.querySelector("img").src = dyr.billede;
+            div.querySelector("p").textContent += dyr.type;
+            div.querySelector("p + p").textContent += dyr.levested;
+
+        }
+    </script>
+</body>
+
+</html>
