@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01 Objekt</title>
+    <link rel="stylesheet" href="">
+
+    <style>
+        .dyr {
+            border: 2px solid black;
+            margin: 1vw;
+            text-align: center;
+        }
+
+        #alledyr {
+            display: grid;
+            grid-template-columns: 1fr;
+        }
+
+        @media only screen and (min-width: 500px) {
+            #alledyr {
+                grid-template-columns: auto auto;
+            }
+        }
+
+        @media only screen and (min-width: 750px) {
+            #alledyr {
+                grid-template-columns: auto auto auto;
+            }
+        }
+
+        @media only screen and (min-width: 1000px) {
+            #alledyr {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+
+        @media only screen and (min-width: 1000px) {
+            #alledyr {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div id="alledyr"></div>
+    <script>
+        document.addEventListener("DOMContentLoaded", start)
+        console.log(start)
+
+        function start() {
+            let alleDyr = [{
+                    "navn": "Gris",
+                    "type": "Pattedyr",
+                    "billede": "http://helf-kea.dk/test/gris.png",
+                    "levested": "Gård"
+                },
+                {
+                    "navn": "Frø",
+                    "type": "Pattedyr",
+                    "billede": "http://helf-kea.dk/test/frog.png",
+                    "levested": "Søer"
+                },
+                {
+                    "navn": "Ræv",
+                    "type": "Pattedyr",
+                    "billede": "http://helf-kea.dk/test/fox.png",
+                    "levested": "Skov"
+                },
+                {
+                    "navn": "Sild",
+                    "type": "Fisk",
+                    "billede": "http://helf-kea.dk/test/sild.jpg",
+                    "levested": "Havet"
+                },
+                {
+                    "navn": "Krokodille",
+                    "type": "Reptil",
+                    "billede": "http://helf-kea.dk/test/kroko.jpg",
+                    "levested": "Amazonas"
+                },
+            ]
+
+            console.log(alleDyr);
+            let info = `Dyr: ${alleDyr.navn}, Type:${alleDyr.type}, Levested:${alleDyr.levested}`
+
+            function visListe() {
+                let div = document.querySelector("div");
+
+                alleDyr.forEach(dyr => {
+                    div.innerHTML += `
+                        <div class="dyr">
+                            <h3>Dyr: ${dyr.navn}</h3>
+                            <img src="${dyr.billede}">
+                            <p>Type: ${dyr.type}</p>
+                            <p>Levested: ${dyr.levested}</p>
+                        </div>
+                        `;
+                })
+            }
+            visListe();
+
+
+        }
+    </script>
+</body>
+
+</html>
