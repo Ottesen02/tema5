@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>01 Objekt</title>
+    <style>
+        .dyr {
+            border: 2px solid black;
+            margin: 1vw;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <script>
+        document.addEventListener("DOMContentLoaded", hentJson)
+        console.log(hentJson)
+
+
+        let alleDyr;
+
+        async function hentJson() {
+
+            let myJson = await fetch("alleDyr.json");
+
+            alleDyr = await myJson.json();
+
+            visDyr();
+        }
+
+
+        function visDyr() {
+
+            let div = document.querySelector("div");
+
+            alleDyr.forEach(dyr => {
+                div.innerHTML += `
+                        <div class="dyr">
+                            <h3>Dyr: ${dyr.navn}</h3>
+                            <img src="${dyr.billede}">
+                            <p>Type: ${dyr.type}</p>
+                            <p>Levested: ${dyr.levested}</p>
+                        </div>
+                        `;
+            })
+        }
+    </script>
+</body>
+
+</html>
