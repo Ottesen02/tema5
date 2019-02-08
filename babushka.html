@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        #retter {
+            display: grid;
+            grid-template-columns: auto;
+        }
+
+        img {
+            width: 100%;
+        }
+
+        @media screen only and (550px) {
+            #retter {
+                grid-template-columns: auto auto;
+            }
+        }
+
+        @media screen only and (800px) {
+            #retter {
+                grid-template-columns: auto auto auto;
+            }
+        }
+    </style>
+</head>
+
+
+
+<body>
+
+    <div id="retter"></div>
+
+    <img src="imgs/large/" alt="">
+
+    <script>
+        document.addEventListener("DOMContentLoaded", hentJson);
+        console.log(hentJson);
+
+
+
+        let retter;
+        let container = document.querySelector("#retter");
+
+        async function hentJson() {
+
+            let myJson = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1jxxxFoWBuMJ1qhQ9BQIAyKHmP38XtAF9_sQr0xo5JLo");
+
+            retter = await myJson.json();
+
+            visRetter();
+        }
+
+        function visRetter() {
+            retter.forEach(ret => {
+                container.innerHTML += `
+                        <div class="ret">
+                            <img src="imgs/large/${ret.billede}.jpg">
+                            <h2>${ret.navn}</h2>
+                            <p>${ret.kort}</p>
+                            <p>Pris: ${ret.pris}kr.</p>
+                        </div>
+                        `;
+            })
+        }
+    </script>
+</body>
+</html>
