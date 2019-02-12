@@ -1,29 +1,195 @@
 <!DOCTYPE html>
 <html lang="">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title></title>
     <style>
-        #retter {
-            display: grid;
-            grid-template-columns: auto;
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
         }
 
-        img {
+        #retter {
+            z-index: 1;
+            display: grid;
+            grid-template-columns: auto;
+            grid-gap: 2vw;
+            max-width: 90vw;
+            margin: 0 auto;
+        }
+
+        #retter img {
+            width: 100%;
+            max-height: 280px;
+        }
+
+        #overlay img {
             width: 100%;
         }
 
-        @media screen only and (550px) {
-            #retter {
-                grid-template-columns: auto auto;
-            }
+        .ret:nth-of-type(odd) {
+            background-color: lightgoldenrodyellow;
         }
 
-        @media screen only and (800px) {
+        .info {
+            background-color: #393939;
+            color: #e2e2e2;
+            padding: 1vw;
+            margin: 1vw;
+            border: 1px solid #393939;
+            transition: all 0.3s ease;
+            border-radius: 5px;
+
+        }
+
+
+        .info:hover {
+            transform: scale(1.05);
+            background-color: #e2e2e2;
+            color: #393939;
+        }
+
+        h2 {
+            margin: 2vw 1vw;
+        }
+
+        p {
+            margin: 3vw 1vw;
+        }
+
+        .ret {
+            z-index: 1;
+            margin: 2vh 0;
+        }
+
+        /*  #overlay {
+            z-index: 2;
+            margin: 0;
+            background-color: #000000;
+            position: absolute;
+            width: 80vw;
+            height: 80vh;
+            opacity: ;
+            left: 50%;
+            left: 10%;
+            top: 10vh;
+            max-width: 700px;
+            border: 2vw solid black;
+            color: white;
+        } */
+
+        header {
+            background-color: orange;
+            height: 30vh;
+            text-align: center
+        }
+
+        header h1 {
+            text-transform: uppercase;
+            padding: 25px 0 10px;
+            margin: 0;
+            font-size: 50px;
+        }
+
+        footer {
+            background-color: #2e2e2e;
+            height: 15vh;
+        }
+
+        @media only screen and (min-width:550px) {
+            #retter {
+                grid-template-columns: auto auto;
+
+            }
+
+            .ret:nth-of-type(odd) {
+                background-color: white;
+            }
+
+            .ret:nth-of-type(4n+2) {
+                background-color: lightgoldenrodyellow;
+            }
+
+            .ret:nth-of-type(4n+3) {
+                background-color: lightgoldenrodyellow;
+            }
+
+            header {
+                height: 25vh;
+            }
+
+            header h1 {
+                font-size: 60px;
+            }
+
+        }
+
+        @media only screen and (min-width:800px) {
             #retter {
                 grid-template-columns: auto auto auto;
+                max-width: 1000px;
             }
+
+            .ret:nth-of-type(4n+2) {
+                background-color: white;
+            }
+
+            .ret:nth-of-type(4n+3) {
+                background-color: white;
+            }
+
+            .ret:nth-of-type(even) {
+                background-color: lightgoldenrodyellow;
+            }
+
+            header {
+                height: 25vh;
+            }
+
+            header h1 {
+                font-size: 70px;
+            }
+
+        }
+
+
+        .filter {
+            cursor: pointer;
+            padding: 5px 15px;
+            border: 2px solid black;
+            background-color: orange;
+            color: black;
+            margin: 5px 0;
+            border-radius: 5px;
+        }
+
+        .sortering {
+            cursor: pointer;
+            padding: 5px 5px;
+            border: 0px solid black;
+            background-color: orange;
+            color: black;
+            margin: 5px 0;
+        }
+
+        .kryds {
+            padding: 5px 5px;
+            border: 0px solid black;
+            background-color: orange;
+            color: black;
+            margin: 5px 0;
+        }
+
+        .sortering_valgt {
+            border-bottom: 2px solid black;
+        }
+
+        .valgt {
+            background-color: black;
+            color: orange;
         }
     </style>
 </head>
@@ -31,19 +197,46 @@
 
 
 <body>
+    <!--- <div id="overlay">
+        <img src="imgs/large/baltiskbondesuppe.jpg" alt="">
+        <h3>Navn</h3>
+        <p>lang beskrivelse</p>
+        <p>pris</p>
+        <button>luk</button>
 
-    <div id="retter"></div>
+    </div> --->
+    <header>
+        <h1 id="logo">babushka</h1>
+        <nav id="menu">
+            <button class="filter valgt" data-ret="alle">Alle</button>
+            <button class="filter" data-ret="forretter">Forretter</button>
+            <button class="filter" data-ret="hovedretter">Hovedretter</button>
+            <button class="filter" data-ret="desserter">Desserter</button>
+            <button class="filter" data-ret="drikkevarer">Drikkevarer</button>
+            <button class="filter" data-ret="sideorders">Sideorders</button>
+            <div>
+                <button id="faldende" class="sortering">Pris Faldende</button>
+                <button id="stigende" class="sortering">Pris Stigende</button>
+                <button id="fjern" class="sortering_valgt sortering">Ingen Sortering</button>
+            </div>
+        </nav>
+    </header>
+    <main>
+        <section id="retter"></section>
+    </main>
+    <footer>
 
-    <img src="imgs/large/" alt="">
+    </footer>
+
 
     <script>
         document.addEventListener("DOMContentLoaded", hentJson);
         console.log(hentJson);
 
-
-
         let retter;
         let container = document.querySelector("#retter");
+        let knap = container.querySelector
+        let filter = "alle"
 
         async function hentJson() {
 
@@ -51,21 +244,87 @@
 
             retter = await myJson.json();
 
+
             visRetter();
+
+            document.querySelectorAll(".sortering").forEach(but => {
+                but.classList.remove("sortering_valgt")
+            })
+            this.classList.add("sortering_valgt");
         }
 
+
         function visRetter() {
+            container.innerHTML = "";
             retter.forEach(ret => {
-                container.innerHTML += `
-                        <div class="ret">
-                            <img src="imgs/large/${ret.billede}.jpg">
+                if (filter == "alle" || filter == ret.kategori)
+                    container.innerHTML += `
+                        <article class="ret">
+                            <img src="imgs/small/${ret.billede}-sm.jpg">
                             <h2>${ret.navn}</h2>
                             <p>${ret.kort}</p>
                             <p>Pris: ${ret.pris}kr.</p>
-                        </div>
+                            <button class="info">Mere information</button>
+                        </article>
                         `;
             })
         }
+
+
+        hentJson();
+
+        document.querySelectorAll(".filter").forEach(but => {
+            but.addEventListener("click", filtrering);
+        })
+
+        function filtrering() {
+            document.querySelectorAll(".filter").forEach(but => {
+                but.classList.remove("valgt");
+            })
+            this.classList.add("valgt");
+            filter = this.getAttribute("data-ret");
+            console.log(filter)
+            visRetter();
+        }
+
+
+
+        async function stigende() {
+            document.querySelectorAll(".sortering").forEach(but => {
+                but.classList.remove("sortering_valgt")
+            })
+            this.classList.add("sortering_valgt");
+            let myJson = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1jxxxFoWBuMJ1qhQ9BQIAyKHmP38XtAF9_sQr0xo5JLo");
+
+            retter = await myJson.json();
+            retter.sort((h, l) => {
+                return (h.pris - l.pris);
+            })
+            visRetter();
+        }
+
+
+        async function faldende() {
+            document.querySelectorAll(".sortering").forEach(but => {
+                but.classList.remove("sortering_valgt")
+            })
+            this.classList.add("sortering_valgt");
+            let myJson = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1jxxxFoWBuMJ1qhQ9BQIAyKHmP38XtAF9_sQr0xo5JLo");
+
+            retter = await myJson.json();
+            retter.sort((h, l) => {
+                return (l.pris - h.pris);
+            })
+            visRetter();
+        }
+
+
+
+
+        document.querySelector("#faldende").addEventListener("click", faldende);
+        document.querySelector("#stigende").addEventListener("click", stigende);
+        document.querySelector("#fjern").addEventListener("click", hentJson)
     </script>
 </body>
+
 </html>
