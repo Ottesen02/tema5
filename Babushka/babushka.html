@@ -13,7 +13,6 @@
         }
 
         #retter {
-            z-index: 1;
             display: grid;
             grid-template-columns: auto;
             grid-gap: 2vw;
@@ -42,7 +41,6 @@
             border: 1px solid #393939;
             transition: all 0.3s ease;
             border-radius: 5px;
-
         }
 
 
@@ -61,25 +59,66 @@
         }
 
         .ret {
-            z-index: 1;
             margin: 2vh 0;
         }
 
-        /*  #overlay {
-            z-index: 2;
+
+        /**************** Popup **************/
+
+        #overlay {
             margin: 0;
-            background-color: #000000;
-            position: absolute;
-            width: 80vw;
-            height: 80vh;
-            opacity: ;
-            left: 50%;
-            left: 10%;
-            top: 10vh;
-            max-width: 700px;
-            border: 2vw solid black;
+            background-color: rgba(0, 0, 0, 0.750);
+            position: fixed;
+            width: 100vw;
+            height: 100vh;
             color: white;
-        } */
+            display: none;
+
+        }
+
+        #indhold {
+            width: 70vw;
+            height: 60vh;
+            margin: 15vh auto;
+            background-color: rgba(0, 0, 0, 0.75);
+            color: white;
+            border: 5px solid orange;
+            padding: 30px 5px;
+            overflow: scroll;
+
+        }
+
+        .popup-billede {
+            text-align: center;
+        }
+
+        #indhold img {
+            max-width: 60vw;
+        }
+
+        .popup-tekst {
+            margin: 0 20px;
+        }
+
+        .popup-tekst h3 {
+            margin: 0 5px;
+        }
+
+        #luk {
+            position: fixed;
+            right: 14vw;
+            top: 10vh;
+        }
+
+        #luk button {
+            padding: 5px 25px;
+            font-size: 15px;
+            background-color: orange;
+            border: 2px solid black;
+            font-weight: 700
+        }
+
+        /************************ Header og footer ***********************/
 
         header {
             background-color: orange;
@@ -98,6 +137,8 @@
             background-color: #2e2e2e;
             height: 15vh;
         }
+
+        /************************ Media ****************************/
 
         @media only screen and (min-width:550px) {
             #retter {
@@ -155,6 +196,7 @@
 
         }
 
+        /******************************* Knapper ***************************/
 
         .filter {
             cursor: pointer;
@@ -197,14 +239,13 @@
 
 
 <body>
-    <!--- <div id="overlay">
-        <img src="imgs/large/baltiskbondesuppe.jpg" alt="">
-        <h3>Navn</h3>
-        <p>lang beskrivelse</p>
-        <p>pris</p>
-        <button>luk</button>
-
-    </div> ---->
+    <div id="overlay">
+        <div id="luk">
+            <button>LUK</button>
+        </div>
+        <div id="indhold">
+        </div>
+    </div>
     <header>
         <h1 id="logo">babushka</h1>
         <nav id="menu">
@@ -235,6 +276,7 @@
 
         let retter;
         let container = document.querySelector("#retter");
+        let dest = document.querySelector("#indhold");
         let knap = container.querySelector
         let filter = "alle"
 
@@ -243,7 +285,6 @@
             let myJson = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1jxxxFoWBuMJ1qhQ9BQIAyKHmP38XtAF9_sQr0xo5JLo");
 
             retter = await myJson.json();
-
 
             visRetter();
 
@@ -257,8 +298,8 @@
         function visRetter() {
             container.innerHTML = "";
             retter.forEach(ret => {
-                if (filter == "alle" || filter == ret.kategori)
-                    container.innerHTML += `
+                if (filter == "alle" || filter == ret.kategori) {
+                    let template = `
                         <article class="ret">
                             <img src="imgs/small/${ret.billede}-sm.jpg">
                             <h2>${ret.navn}</h2>
@@ -267,6 +308,30 @@
                             <button class="info">Mere information</button>
                         </article>
                         `;
+
+                    container.insertAdjacentHTML("beforeend", template);
+                    container.lastElementChild.addEventListener("click", visRet)
+
+                    function visRet() {
+                        dest.innerHTML = `
+                            <figure class="popup-billede">
+                                <img src="imgs/large/${ret.billede}.jpg" alt="">
+                            </figure>
+                            <article class="popup-tekst">
+                                <h3>${ret.navn}</h3>
+                                <p>${ret.lang}</p>
+                                <p>Oprindelse: ${ret.oprindelse}</p>
+                                <p>Pris: ${ret.pris}kr</p>
+                            </article>
+                        `;
+                        document.querySelector("#overlay").style.display = "block";
+                        document.querySelector("#luk").addEventListener("click", close)
+                    };
+
+                    function close() {
+                        document.querySelector("#overlay").style.display = "none";
+                    }
+                }
             })
         }
 
@@ -303,7 +368,6 @@
             visRetter();
         }
 
-
         async function faldende() {
             document.querySelectorAll(".sortering").forEach(but => {
                 but.classList.remove("sortering_valgt")
@@ -317,8 +381,6 @@
             })
             visRetter();
         }
-
-
 
 
         document.querySelector("#faldende").addEventListener("click", faldende);
