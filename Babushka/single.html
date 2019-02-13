@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+            background-color: orange;
+
+        }
+
+
+        /**************** Popup **************/
+
+        #indhold {
+            width: 70vw;
+            height: 60vh;
+            margin: 1vw auto 5vh;
+            color: black;
+            box-shadow: 0 0 5px black;
+            padding: 30px 5px;
+            overflow: scroll;
+
+        }
+
+        .popup-billede {
+            text-align: center;
+        }
+
+        #overlay img {
+            width: 100%;
+        }
+
+        #indhold img {
+            max-width: 80vw;
+        }
+
+        .popup-tekst {
+            margin: 0 20px;
+        }
+
+        .popup-tekst h3 {
+            margin: 0 5px;
+        }
+
+        #luk {
+            text-align: center;
+        }
+
+        #luk button {
+            padding: 5px 25px;
+            font-size: 15px;
+            background-color: orange;
+            border: 2px solid black;
+            font-weight: 700;
+            border-radius: 5px;
+        }
+
+        /************************ Header og footer ***********************/
+
+        header {
+            background-color: orange;
+            height: 15vh;
+            text-align: center
+        }
+
+        header h1 {
+            text-transform: uppercase;
+            padding: 25px 0 10px;
+            margin: 0;
+            font-size: 50px;
+        }
+
+        footer {
+            background-color: #2e2e2e;
+            height: 15vh;
+            color: white;
+            font-family: monospace;
+            padding: 2vw;
+            text-align: center;
+        }
+
+    </style>
+</head>
+
+
+
+<body>
+    <header>
+        <h1 id="logo">babushka</h1>
+    </header>
+    <main id="overlay">
+        <div id="luk">
+            <button>Tilbage</button>
+        </div>
+        <section id="indhold">
+        </section>
+    </main>
+
+
+    <footer>
+        <p>Fuglevej 123, 5678 København V.</p>
+        <p>Copyright Babushka 2019</p>
+        <p>Created by Martin Ottesen</p>
+    </footer>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", hentJson);
+        console.log(hentJson);
+
+        let retter;
+        let dest = document.querySelector("#indhold");
+        let urlParams = new URLSearchParams(window.location.search);
+        let id = urlParams.get("id");
+
+
+        async function hentJson() {
+            let myJson = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1jxxxFoWBuMJ1qhQ9BQIAyKHmP38XtAF9_sQr0xo5JLo");
+            retter = await myJson.json();
+
+            visRetter();
+
+        }
+
+
+        function visRetter() {
+            dest.innerHTML = "";
+            retter.forEach(ret => {
+                if (ret.id == id) {
+                    let template = `
+                            <figure class="popup-billede">
+                                <img src="imgs/large/${ret.billede}.jpg" alt="${ret.navn}">
+                            </figure>
+                            <article class="popup-tekst">
+                                <h3>${ret.navn}</h3>
+                                <p>${ret.lang}</p>
+                                <p>Oprindelse: ${ret.oprindelse}</p>
+                                <p>Pris: ${ret.pris}kr</p>
+                            </article>
+                        `;
+
+                    dest.insertAdjacentHTML("beforeend", template);
+
+                }
+            })
+        }
+
+
+        hentJson();
+
+
+        document.querySelector("#luk").addEventListener("click", () => {
+            location.href = "babushka_new.html"
+        })
+
+    </script>
+</body>
+
+</html>
