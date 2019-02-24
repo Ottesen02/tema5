@@ -97,7 +97,7 @@
                 document.querySelector("#mobile_menu").style.display = "none";
             })
 
-            let retter;
+            let retter = [];
             let container = document.querySelector("#retter");
             let dest = document.querySelector("#indhold");
             let knap = container.querySelector
@@ -105,16 +105,13 @@
 
             async function hentJson() {
 
-                let myJson = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1epgoCI-wKQnKtxYzh45bjLDbzrX8sX3hAA_Iy08b-is&fbclid=IwAR1vhgmXkOxaMb5XM2AFbo40c_WHf2E2gq4HJUamwrU3JPTFLCkSwPfd9-g");
-
+                const myJson = await fetch('retter.json');
+                console.log(myJson);
                 retter = await myJson.json();
+                console.log(myJson);
 
                 visRetter();
 
-                document.querySelectorAll(".sortering").forEach(but => {
-                    but.classList.remove("sortering_valgt")
-                })
-                this.classList.add("sortering_valgt");
             }
 
 
@@ -174,40 +171,6 @@
                 visRetter();
             }
 
-
-
-            async function stigende() {
-                document.querySelectorAll(".sortering").forEach(but => {
-                    but.classList.remove("sortering_valgt")
-                })
-                this.classList.add("sortering_valgt");
-                let myJson = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1jxxxFoWBuMJ1qhQ9BQIAyKHmP38XtAF9_sQr0xo5JLo");
-
-                retter = await myJson.json();
-                retter.sort((h, l) => {
-                    return (h.pris - l.pris);
-                })
-                visRetter();
-            }
-
-            async function faldende() {
-                document.querySelectorAll(".sortering").forEach(but => {
-                    but.classList.remove("sortering_valgt")
-                })
-                this.classList.add("sortering_valgt");
-                let myJson = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1jxxxFoWBuMJ1qhQ9BQIAyKHmP38XtAF9_sQr0xo5JLo");
-
-                retter = await myJson.json();
-                retter.sort((h, l) => {
-                    return (l.pris - h.pris);
-                })
-                visRetter();
-            }
-
-
-            document.querySelector("#faldende").addEventListener("click", faldende);
-            document.querySelector("#stigende").addEventListener("click", stigende);
-            document.querySelector("#fjern").addEventListener("click", hentJson)
         }
     </script>
 </body>

@@ -1,0 +1,146 @@
+[
+    {
+        "kategori": "hvidvin",
+        "navn": "Chardonnay",
+        "pris": 375,
+        "beskrivelse": "2016 - Chardonnay, Pierre André",
+        "oprindelse": "Bourgogne",
+        "billede": "Chardonnay.jpg"
+},
+    {
+        "kategori": "hvidvin",
+        "navn": "Le Blanc Sec",
+        "pris": 455,
+        "beskrivelse": "2016 - Le Blanc Sec, De Suduiraut",
+        "oprindelse": "Bordeaux",
+        "billede": "LeBlancSec.jpg"
+},
+    {
+        "kategori": "hvidvin",
+        "navn": "Sauvignon Blanc",
+        "pris": 345,
+        "beskrivelse": "2017 - Sauvignon Blanc L'arpent des Vaudons, Mérieau",
+        "oprindelse": "Loire",
+        "billede": "SauvignonBlanc.png"
+},
+    {
+        "kategori": "rødvin",
+        "navn": "Pinot Noir",
+        "pris": 395,
+        "beskrivelse": "2016 -  Bourgogne Pinot Noir, Pierre André",
+        "oprindelse": "Bourgogne",
+        "billede": "PinotNoir.jpg"
+},
+    {
+        "kategori": "rødvin",
+        "navn": "Medoc",
+        "pris": 475,
+        "beskrivelse": "2014 - Medoc, Chateau Nouret",
+        "oprindelse": "Bordeaux",
+        "billede": "Medoc.jpg"
+},
+    {
+        "kategori": "rødvin",
+        "navn": "Chinon Tradition",
+        "pris": 325,
+        "beskrivelse": "2015 - Chinon Tradition, Pierre Sourdais",
+        "oprindelse": "Loire",
+        "billede": "chinon.jpg"
+},
+    {
+        "kategori": "forretter",
+        "navn": "Paté de Campagne",
+        "pris": 115,
+        "beskrivelse": "Pate De Campagne med syltet grøn",
+        "oprindelse": "",
+        "billede": "PatédeCampagne.jpg"
+},
+    {
+        "kategori": "forretter",
+        "navn": "Fiskesuppe",
+        "pris": 125,
+        "beskrivelse": "Fiskesuppe med rouille og kammusling",
+        "oprindelse": "",
+        "billede": "fiskesuppe.jpg"
+},
+    {
+        "kategori": "forretter",
+        "navn": "Foie Gras ",
+        "pris": 145,
+        "beskrivelse": "Foie gras terrine med cognac-marinerede svesker",
+        "oprindelse": "",
+        "billede": "FoieGras.jpg"
+},
+    {
+        "kategori": "hovedretter",
+        "navn": "Dagens Fisk",
+        "pris": 215,
+        "beskrivelse": "Dagens fisk fra torvet serveret med årstidens grøntsager",
+        "oprindelse": "",
+        "billede": "dagensfisk.jpg"
+},
+    {
+        "kategori": "hovedretter",
+        "navn": "Bryst Lammemørbrad",
+        "pris": 195,
+        "beskrivelse": "Bryst lammemørbrad med braisseret hals, piquillios, mynte og fennikel",
+        "oprindelse": "",
+        "billede": "lammemørbrad.jpg"
+},
+    {
+        "kategori": "hovedretter",
+        "navn": "Boeuf Bordelaise",
+        "pris": 195,
+        "beskrivelse": "Boeuf Bordelaise med pommes Sarladaises",
+        "oprindelse": "",
+        "billede": "BoeufBordelaise.jpg"
+},
+    {
+        "kategori": "desserter",
+        "navn": "Franske landoste",
+        "pris": 125,
+        "beskrivelse": "De dejligste franske landoste serveret med kiks",
+        "oprindelse": "",
+        "billede": "Franskelandoste.jpg"
+},
+    {
+        "kategori": "desserter",
+        "navn": "Créme brulée",
+        "pris": 95,
+        "beskrivelse": "Den mest smagfulde Créme brulée serveret med hindbærsorbet",
+        "oprindelse": "",
+        "billede": "Crémebrulée.jpg"
+},
+    {
+        "kategori": "desserter",
+        "navn": "Tarte Tatin",
+        "pris": 110,
+        "beskrivelse": "Tarte tatin med creme anglaise og vanillieis",
+        "oprindelse": "",
+        "billede": "TarteTatin.jpg"
+},
+    {
+        "kategori": "sideorders",
+        "navn": "Mixet grøn salat",
+        "pris": 35,
+        "beskrivelse": "Frisk grøn salat til ethvert måltid ",
+        "oprindelse": "",
+        "billede": "grønsalat.png"
+},
+    {
+        "kategori": "sideorders",
+        "navn": "Salat",
+        "pris": 50,
+        "beskrivelse": "Salat med soltørrede tomater og comté",
+        "oprindelse": "",
+        "billede": "salat.jpg"
+},
+    {
+        "kategori": "sideorders",
+        "navn": "Fritter",
+        "pris": 40,
+        "beskrivelse": "De sprødeste fritter servet med sauce tartare",
+        "oprindelse": "",
+        "billede": "fritter.jpg"
+}
+]
