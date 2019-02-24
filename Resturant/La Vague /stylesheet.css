@@ -1,0 +1,814 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "raleway", sans-serif;
+
+}
+
+img {
+    width: 100%;
+}
+
+
+/******************** HEADER OG NAV ********************/
+
+.hide_mobile {
+    display: none;
+}
+
+
+header {
+    background-color: #000D7F;
+    color: white;
+    padding: 20px;
+    font-size: 30px;
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.burger_menu {
+    background-image: url(billeder/burger.svg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+    align-self: center;
+}
+
+#cross {
+    background-image: url(billeder/cross.svg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 30px;
+    width: 30px;
+    position: fixed;
+    right: 20px;
+    top: 23px;
+}
+
+.logo_tekst img {
+    height: 40px;
+    width: 100px;
+    margin-bottom: -10px;
+}
+
+#mobile_menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    background-color: #262F7F;
+    padding: 80px 30px;
+    height: 100vh;
+    display: none;
+    z-index: 5;
+
+}
+
+#mobile_menu ul {
+    list-style: none;
+}
+
+#mobile_menu ul li {
+    padding: 10px;
+}
+
+
+ul a {
+    text-decoration: none;
+    color: white;
+    font-size: 20px;
+    transition: all 0.2s ease;
+}
+
+/****************** HERO *****************/
+
+.hero {
+    text-align: center;
+    background-image: url(billeder/restaurant.jpg);
+    background-size: cover;
+    overflow: hidden;
+}
+
+.black_overlay {
+    background-color: rgba(0, 0, 0, 0.50);
+    padding-top: 50px;
+    grid-template-columns: auto;
+    display: grid;
+}
+
+
+.hero_logo {
+    background-image: url(billeder/logo_white.svg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 270px;
+    width: 250px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.hero_overlay {
+    background-color: rgba(0, 21, 204, 0.5);
+    height: 100%
+}
+
+.hero_info {
+    color: white;
+    padding: 4vh 0 0 0;
+}
+
+.hero_info button {
+    background-color: rgba(255, 255, 255, 0);
+    border: 3px solid white;
+    border-radius: 30px;
+    padding: 13px 35px;
+    margin-bottom: 30px;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+    from {
+        transform: scale(1)
+    }
+
+    to {
+        transform: scale(1.05)
+    }
+}
+
+.hero_info h3 {
+    margin: 5px 0 30px;
+    font-size: 25px
+}
+
+.hero_info p {
+    margin-top: 10px;
+    margin-bottom: 20px;
+    font-size: 18px
+}
+
+.swipe {
+    background-image: url(billeder/arrow.svg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    height: 60px;
+    width: 60px;
+    margin: 30px auto 10px;
+    animation-name: offset;
+    animation-iteration-count: infinite;
+    animation-duration: 1s;
+    animation-direction: alternate;
+
+}
+
+@keyframes offset {
+    from {
+        transform: translateY(0px)
+    }
+
+    to {
+        transform: translateY(20px)
+    }
+}
+
+
+.info_menu {
+    display: grid;
+    grid-template-columns: auto;
+
+}
+
+.vores_mad {
+    background-image: url(billeder/images-2.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    text-align: center;
+    padding: 75px 20px;
+    margin: 50px 20px 0px;
+    box-shadow: 0 5px 6px rgba(0, 26, 255, 0.47);
+    overflow: hidden;
+}
+
+.vores_vin {
+    background-image: url(billeder/download-2.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    text-align: center;
+    padding: 75px 20px;
+    margin: 50px 20px 0px;
+    box-shadow: 0 5px 6px rgba(0, 26, 255, 0.47)
+}
+
+.restauranten {
+    background-image: url(billeder/images.png);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    text-align: center;
+    padding: 75px 20px;
+    margin: 50px 20px 50px;
+    box-shadow: 0 5px 6px rgba(0, 26, 255, 0.47)
+}
+
+.info_menu a {
+    color: white;
+    font-size: 30px;
+    text-decoration: none;
+}
+
+
+
+/*************** SIDEOVERSKRIFTER **************/
+
+.overskrift {
+    text-align: center;
+    color: white;
+    background-color: grey;
+    font-size: 20px;
+    padding: 20px;
+}
+
+.menukort {
+    background-image: url(billeder/398.png);
+    background-size: cover;
+    background-position: center
+}
+
+.selskaber {
+    background-image: url(billeder/701fd4d1ce73c4c530aaec7f6e330e49.jpg);
+    background-size: cover;
+    background-position: center
+}
+
+.bestilling {
+    background-image: url(billeder/41993-das-loft-sofitel-19to1.jpg);
+    background-size: cover;
+    background-position: center
+}
+
+/******************** SELSKABER ********************/
+
+.selskabs_container h2 {
+    font-family: Italianno, cursive;
+    font-weight: 100;
+    font-size: 35px;
+    margin: 10px 0
+}
+
+.selskabs_container p {
+    margin: 20px 0;
+}
+
+.selskabs_container {
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 1000px;
+}
+
+.selskabs_container div {
+    min-width: 350px;
+    width: 40vw;
+    margin: 0 auto;
+
+}
+
+/****************** BORDBESTILLING *****************/
+
+.bestilling_container h2 {
+    font-family: Italianno, cursive;
+    font-weight: 100;
+    font-size: 35px;
+    margin: 10px 0
+}
+
+.bestilling_container p {
+    margin: 20px 0;
+}
+
+.bestilling_container {
+    margin: 20px auto;
+    display: grid;
+    grid-template-columns: 1fr;
+    max-width: 1000px;
+}
+
+.bestilling_container div {
+    min-width: 350px;
+    width: 40vw;
+    margin: 0 auto;
+
+}
+
+.ring {
+    text-align: center;
+    padding: 20px;
+}
+
+.ring h3 {
+    margin: -15px
+}
+
+.ring h2 {
+    font-size: 50px
+}
+
+.ring button {
+    border: 5px solid #000D7F;
+    padding: 7px 30px;
+    font-size: 20px;
+    margin: 30px;
+}
+
+/******************* INPUT *********************/
+
+.contact {
+    text-align: center;
+}
+
+input {
+    width: 350px;
+    height: 35px;
+    padding: 10px 10px;
+    background-color: #262F7F;
+    border: 2px solid #000D7F;
+    margin: 5px 0;
+    color: white;
+    font-size: 15px;
+}
+
+input::placeholder {
+    color: #d9d9d9;
+}
+
+.contact button {
+    border: 5px solid #000D7F;
+    padding: 7px 30px;
+    font-size: 20px;
+    margin: 20px;
+}
+
+.besked {
+    height: 150px;
+}
+
+
+/********************* FILTER KNAPPER *********************/
+
+
+#filtrering {
+    background-color: #4C5FFF;
+    display: block;
+    text-align: center;
+    padding: 5px;
+
+
+}
+
+.filter {
+    cursor: pointer;
+    padding: 5px 15px;
+    border: 0px solid white;
+    background-color: rgba(240, 248, 255, 0);
+    color: white;
+    margin: 2px 5px;
+}
+
+.sortering {
+    cursor: pointer;
+    padding: 5px 5px;
+    border: 0px solid black;
+    background-color: orange;
+    color: black;
+    margin: 5px 0;
+}
+
+/*
+.kryds {
+    padding: 5px 5px;
+    border: 0px solid black;
+    background-color: orange;
+    color: black;
+    margin: 5px 0;
+}
+
+.sortering_valgt {
+    border-bottom: 2px solid black;
+}
+*/
+.valgt {
+    border-bottom: 5px solid #000D7F
+}
+
+
+
+/*************** FOOTER ***************/
+
+footer {
+    background-color: #262F7F;
+    color: white;
+    font-size: 12px;
+    display: grid;
+    text-align: center;
+    grid-auto-flow: column;
+    grid-template-rows: auto auto;
+
+}
+
+.footer_logo {
+    background-image: url(billeder/logo_white.svg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 80px;
+    margin: 20px auto;
+}
+
+.rapport {
+    background-image: url(billeder/download-3.jpg);
+    background-size: 100%;
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 40px;
+    margin: 20px auto;
+}
+
+.tlf_add {
+    margin: auto;
+    font-size: 14px;
+}
+
+.abningstider {
+    margin: auto;
+}
+
+/*************** JSON ***************/
+
+
+#retter {
+    display: grid;
+    grid-template-columns: auto;
+    grid-gap: 2vw;
+    max-width: 90vw;
+    margin: 0 auto;
+}
+
+#retter img {
+    width: 100%;
+}
+
+#overlay img {
+    width: 100%;
+}
+
+.ret {
+    margin: 20px;
+    box-shadow: 0 5px 5px #001AFF;
+    padding: 10px;
+
+}
+
+/**************** POPUP **************/
+
+#overlay {
+    margin: 0;
+    background-color: rgba(0, 0, 0, 0.750);
+    position: fixed;
+    width: 100vw;
+    height: 100vh;
+    color: white;
+    display: none;
+
+}
+
+#indhold {
+    width: 70vw;
+    height: 60vh;
+    margin: 15vh auto;
+    background-color: rgba(0, 0, 0, 0.75);
+    color: white;
+    padding: 30px 5px;
+    overflow: scroll;
+    box-shadow: 0 0 10px #001AFF
+}
+
+.popup-billede {
+    text-align: center;
+}
+
+#indhold img {
+    max-width: 60vw;
+}
+
+.popup-tekst {
+    margin: 0 20px;
+}
+
+#luk {
+    position: fixed;
+    right: 14vw;
+    top: 10vh;
+}
+
+#luk button {
+    padding: 5px 25px;
+    font-size: 15px;
+    background-color: black;
+    border: 2px solid #001AFF;
+    font-weight: 700;
+    color: white;
+}
+
+/**************** MEDIA **************/
+
+
+@media only screen and (min-width:700px) {
+
+    #retter {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .black_overlay {
+        grid-template-columns: auto auto;
+        padding-top: 0;
+    }
+
+    .hero_logo {
+        margin-top: auto
+    }
+
+    .info_menu {
+        grid-template-columns: auto auto auto;
+        margin-top: 50px;
+
+    }
+
+    .vores_mad {
+        padding: 50px 20px;
+        margin: 50px 10px 0px;
+    }
+
+    .vores_vin {
+        padding: 50px 20px;
+        margin: 50px 10px 0px;
+    }
+
+    .restauranten {
+        padding: 50px 20px;
+        margin: 50px 5px 0px;
+    }
+
+    .info_menu a {
+        color: white;
+        font-size: 25px;
+    }
+
+    footer {
+        margin-top: 100px;
+        padding: 50px 0 110px;
+        grid-template-columns: auto auto auto auto;
+        grid-auto-flow: row;
+    }
+
+    footer div {
+        align-self: center;
+    }
+
+    .swipe {
+        display: none;
+    }
+
+    .selskabs_container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    input {
+        width: 45vw;
+    }
+
+    .contact button {
+        border: 5px solid #000D7F;
+        padding: 7px 30px;
+        font-size: 20px;
+        margin: 20px;
+    }
+
+    .besked {
+        height: 150px;
+        width: 90vw;
+    }
+
+
+    .bestilling_container {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+@media only screen and (min-width:1050px) {
+
+    #retter {
+        grid-template-columns: 1fr 1fr 1fr;
+        max-width: 1000px;
+        padding: 1vw;
+    }
+
+    nav ul a {
+        padding: 0 15px;
+    }
+
+    nav ul a:hover {
+        border-bottom: 5px solid #4C5FFF;
+    }
+
+    .logo_tekst img {
+        height: 50px;
+        width: 150px;
+        margin-bottom: -10px;
+    }
+
+    .black_overlay {
+        grid-template-columns: auto auto;
+        padding-top: 0;
+    }
+
+    .hero_logo {
+        margin: 300px;
+    }
+
+    .info_menu {
+        grid-template-columns: auto auto auto;
+        margin-top: 50px;
+    }
+
+    .vores_mad {
+        padding: 50px 20px;
+        margin: 50px 10px 0px;
+    }
+
+    .vores_vin {
+        padding: 50px 20px;
+        margin: 50px 10px 0px;
+    }
+
+    .restauranten {
+        padding: 50px 20px;
+        margin: 50px 5px 0px;
+    }
+
+    .info_menu a {
+        color: white;
+        font-size: 25px;
+    }
+
+    footer {
+        margin-top: 100px;
+        padding: 50px 0 110px;
+        grid-template-columns: auto auto auto auto;
+        grid-auto-flow: row;
+    }
+
+    footer div {
+        align-self: center;
+    }
+
+    .swipe {
+        display: none;
+    }
+
+    .hide_desktop {
+        display: none;
+    }
+
+    .hide_mobile {
+        display: flex;
+    }
+
+    .hero_logo {
+        height: 300px;
+        width: 350px;
+        margin: auto;
+    }
+
+    .hero_overlay {
+        padding: 70px 0;
+
+    }
+
+    .hero_info {
+        color: white;
+        padding: 4vh 0 0 0;
+    }
+
+    .hero_info button {
+        margin-bottom: 50px;
+        margin-top: -20px;
+        font-size: 30px;
+        border: 5px solid white;
+    }
+
+    .hero_info h3 {
+        margin: 5px 0 30px;
+        font-size: 35px
+    }
+
+    .hero_info p {
+        margin-top: 10px;
+        margin-bottom: 30px;
+        font-size: 25px
+    }
+
+    .scroll {
+        border: 5px solid #000D7F;
+        margin: 30px auto;
+        height: 80px;
+        width: 35px;
+        border-radius: 20px;
+    }
+
+    .inner_scroll {
+        background-color: #000D7F;
+        width: 17px;
+        height: 31px;
+        margin: 35px auto;
+        border-radius: 9px;
+        animation: bob 1s infinite alternate ease
+    }
+
+    @keyframes bob {
+        from {
+            transform: translateY(0px)
+        }
+
+        to {
+            transform: translateY(-15px)
+        }
+    }
+
+
+    .info_menu {
+        grid-template-columns: auto auto auto;
+        margin-top: 50px;
+
+    }
+
+    .vores_mad {
+        padding: 75px 20px;
+        margin: 0px 10px 0px;
+    }
+
+    .vores_vin {
+        padding: 75px 20px;
+        margin: 0px 10px 0px;
+    }
+
+    .restauranten {
+        padding: 75px 20px;
+        margin: 0px 10px 0px;
+    }
+
+    .info_menu a {
+        color: white;
+        font-size: 30px;
+
+    }
+
+    footer {
+        margin-top: 100px;
+        padding: 30px 0;
+        grid-template-columns: auto auto auto auto;
+        grid-auto-flow: row;
+
+    }
+
+    .footer_logo {
+        width: 200px;
+        height: 160px;
+    }
+
+    .rapport {
+        width: 200px;
+        height: 80px;
+    }
+
+    .tlf_add {
+        margin: auto;
+        font-size: 16px;
+    }
+
+    .abningstider {
+        margin: auto;
+        font-size: 16px
+    }
+}

@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Vague</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Tangerine:700" rel="stylesheet">
+</head>
+
+<body>
+    <div id="overlay">
+        <div id="luk">
+            <button>LUK</button>
+        </div>
+        <div id="indhold">
+        </div>
+    </div>
+    <header>
+        <nav>
+            <div class="logo_tekst"><a href="index.html"><img src="billeder/white.svg" alt="la vague"></a></div>
+            <ul class="hide_mobile">
+                <li><a href="menu.html">Menu- & Vinkort</a></li>
+                <li><a href="selskaber.html">Selskaber</a></li>
+                <li><a href="bordbestilling.html">Bordbestilling</a></li>
+            </ul>
+            <div id="burger" class="burger_menu hide_desktop">
+            </div>
+
+        </nav>
+    </header>
+    <div id="mobile_menu">
+        <div id="cross"></div>
+
+        <ul>
+            <li><a id="menu1" href="menu.html">Menu- & Vinkort</a></li>
+            <li><a id="menu2" href="selskaber.html">Selskaber</a></li>
+            <li><a id="menu3" href="bordbestilling.html">Bordbestilling</a></li>
+        </ul>
+    </div>
+    <section class="menukort overskrift">
+        <h1>Menu- & Vinkort</h1>
+    </section>
+
+    <nav id="filtrering">
+        <button class="filter valgt" data-ret="alle">Alle</button>
+        <button class="filter" data-ret="forretter">Forretter</button>
+        <button class="filter" data-ret="hovedretter">Hovedretter</button>
+        <button class="filter" data-ret="desserter">Desserter</button>
+        <button class="filter" data-ret="sideorders">Sideorders</button>
+        <button class="filter" data-ret="hvidvin">Hvidvin</button>
+        <button class="filter" data-ret="rødvin">Rødvin</button>
+
+    </nav>
+    <main>
+        <section id="retter"></section>
+    </main>
+
+    <footer>
+        <div class="footer_logo"></div>
+        <div class="rapport"></div>
+        <div class="tlf_add">
+            <p>Sankt Jakobs Plads 1 <br>
+                2100 København Ø. <br>
+                tlf: +45 23 13 83 03</p>
+        </div>
+        <div class="abningstider">
+            <p>Åbningstider<br>
+                Frokost: 12.00 - 15.00 (lør: 12.00 - 16.00)<br>
+                Aften: 18.00 - 22.00 (søn: 17.00 - 22.00)</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start)
+
+        function start() {
+
+            document.querySelector("#burger").addEventListener("click", () => {
+                document.querySelector("#mobile_menu").style.display = "block";
+            })
+
+            document.querySelector("#cross").addEventListener("click", () => {
+                document.querySelector("#mobile_menu").style.display = "none";
+            })
+
+            document.querySelector("#menu1").addEventListener("click", () => {
+                document.querySelector("#mobile_menu").style.display = "none";
+            })
+
+            document.querySelector("#menu2").addEventListener("click", () => {
+                document.querySelector("#mobile_menu").style.display = "none";
+            })
+
+            document.querySelector("#menu3").addEventListener("click", () => {
+                document.querySelector("#mobile_menu").style.display = "none";
+            })
+
+            let retter;
+            let container = document.querySelector("#retter");
+            let dest = document.querySelector("#indhold");
+            let knap = container.querySelector
+            let filter = "alle"
+
+            async function hentJson() {
+
+                let myJson = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1epgoCI-wKQnKtxYzh45bjLDbzrX8sX3hAA_Iy08b-is&fbclid=IwAR1vhgmXkOxaMb5XM2AFbo40c_WHf2E2gq4HJUamwrU3JPTFLCkSwPfd9-g");
+
+                retter = await myJson.json();
+
+                visRetter();
+
+                document.querySelectorAll(".sortering").forEach(but => {
+                    but.classList.remove("sortering_valgt")
+                })
+                this.classList.add("sortering_valgt");
+            }
+
+
+            function visRetter() {
+                container.innerHTML = "";
+                retter.forEach(ret => {
+                    if (filter == "alle" || filter == ret.kategori) {
+                        let template = `
+                        <article class="ret">
+                            <img src="menu_billeder/${ret.billede}">
+                            <h2>${ret.navn}</h2>
+                            <p>${ret.beskrivelse}</p>
+                            <p>Pris: ${ret.pris}kr.</p>
+                        </article>
+                        `;
+
+                        container.insertAdjacentHTML("beforeend", template);
+                        container.lastElementChild.addEventListener("click", visRet)
+
+                        function visRet() {
+                            dest.innerHTML = `
+                            <figure class="popup-billede">
+                                <img src="menu_billeder/${ret.billede}" alt="">
+                            </figure>
+                            <article class="popup-tekst">
+                                <h3>${ret.navn}</h3>
+                                <p>${ret.beskrivelse}</p>
+                                <p>${ret.oprindelse}</p>
+                                <p>Pris: ${ret.pris}kr</p>
+                            </article>
+                        `;
+                            document.querySelector("#overlay").style.display = "block";
+                            document.querySelector("#luk").addEventListener("click", close)
+                        };
+
+                        function close() {
+                            document.querySelector("#overlay").style.display = "none";
+                        }
+                    }
+                })
+            }
+
+
+            hentJson();
+
+            document.querySelectorAll(".filter").forEach(but => {
+                but.addEventListener("click", filtrering);
+            })
+
+            function filtrering() {
+                document.querySelectorAll(".filter").forEach(but => {
+                    but.classList.remove("valgt");
+                })
+                this.classList.add("valgt");
+                filter = this.getAttribute("data-ret");
+                console.log(filter)
+                visRetter();
+            }
+
+
+
+            async function stigende() {
+                document.querySelectorAll(".sortering").forEach(but => {
+                    but.classList.remove("sortering_valgt")
+                })
+                this.classList.add("sortering_valgt");
+                let myJson = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1jxxxFoWBuMJ1qhQ9BQIAyKHmP38XtAF9_sQr0xo5JLo");
+
+                retter = await myJson.json();
+                retter.sort((h, l) => {
+                    return (h.pris - l.pris);
+                })
+                visRetter();
+            }
+
+            async function faldende() {
+                document.querySelectorAll(".sortering").forEach(but => {
+                    but.classList.remove("sortering_valgt")
+                })
+                this.classList.add("sortering_valgt");
+                let myJson = await fetch("https://mandalskeawebspace.dk/claude_php/clean_up_spreadsheet.php?id=1jxxxFoWBuMJ1qhQ9BQIAyKHmP38XtAF9_sQr0xo5JLo");
+
+                retter = await myJson.json();
+                retter.sort((h, l) => {
+                    return (l.pris - h.pris);
+                })
+                visRetter();
+            }
+
+
+            document.querySelector("#faldende").addEventListener("click", faldende);
+            document.querySelector("#stigende").addEventListener("click", stigende);
+            document.querySelector("#fjern").addEventListener("click", hentJson)
+        }
+    </script>
+</body>
+
+</html>

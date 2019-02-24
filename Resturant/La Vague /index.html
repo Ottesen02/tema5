@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="da">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La Vague</title>
+    <link rel="stylesheet" href="stylesheet.css">
+    <link href="https://fonts.googleapis.com/css?family=Raleway|Tangerine:700" rel="stylesheet">
+</head>
+
+<body>
+
+    <header>
+        <nav>
+            <div class="logo_tekst"><a href="index.html"><img src="billeder/white.svg" alt="la vague"></a></div>
+            <ul class="hide_mobile">
+                <li><a href="menu.html">Menu- & Vinkort</a></li>
+                <li><a href="selskaber.html">Selskaber</a></li>
+                <li><a href="bordbestilling.html">Bordbestilling</a></li>
+            </ul>
+            <div id="burger" class="burger_menu hide_desktop">
+            </div>
+
+        </nav>
+    </header>
+    <div id="mobile_menu">
+        <div id="cross"></div>
+
+        <ul>
+            <li><a id="menu1" href="menu.html">Menu- & Vinkort</a></li>
+            <li><a id="menu2" href="selskaber.html">Selskaber</a></li>
+            <li><a id="menu3" href="bordbestilling.html">Bordbestilling</a></li>
+        </ul>
+    </div>
+
+    <section class="hero">
+        <div class="black_overlay">
+            <div class="hero_logo"></div>
+            <div class="hero_overlay">
+                <div class="hero_info">
+                    <button>Bestil Bord</button>
+                    <h3>tlf: +45 23 13 83 03</h3>
+                    <p>Åbningstider<br>
+                        Frokost: 12.00 - 15.00 (lør: 12.00 - 16.00)<br>
+                        Aften: 18.00 - 22.00 (søn: 17.00 - 22.00)</p>
+                    <p>Sankt Jakobs Plads 1 <br>
+                        2100 København Ø.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div class="scroll hide_mobile">
+        <div class="inner_scroll hide_mobile"></div>
+    </div>
+    <div class="swipe hide_desktop"></div>
+
+    <section class="info_menu">
+        <article class="vores_mad">
+            <div class="black">
+                <a href="#">Vores Mad</a>
+            </div>
+        </article>
+        <article class="vores_vin">
+            <a href="#">Vores Vin</a>
+        </article>
+        <article class="restauranten">
+            <a href="#">Restaurenten</a>
+        </article>
+    </section>
+    <footer>
+        <div class="footer_logo"></div>
+        <div class="rapport"></div>
+        <div class="tlf_add">
+            <p>Sankt Jakobs Plads 1 <br>
+                2100 København Ø. <br>
+                tlf: +45 23 13 83 03</p>
+        </div>
+        <div class="abningstider">
+            <p>Åbningstider<br>
+                Frokost: 12.00 - 15.00 (lør: 12.00 - 16.00)<br>
+                Aften: 18.00 - 22.00 (søn: 17.00 - 22.00)</p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", start)
+
+        function start() {
+
+            document.querySelector("#burger").addEventListener("click", () => {
+                document.querySelector("#mobile_menu").style.display = "block";
+            })
+
+            document.querySelector("#cross").addEventListener("click", () => {
+                document.querySelector("#mobile_menu").style.display = "none";
+            })
+
+            document.querySelector("#menu1").addEventListener("click", () => {
+                document.querySelector("#mobile_menu").style.display = "none";
+            })
+
+            document.querySelector("#menu2").addEventListener("click", () => {
+                document.querySelector("#mobile_menu").style.display = "none";
+            })
+
+            document.querySelector("#menu3").addEventListener("click", () => {
+                document.querySelector("#mobile_menu").style.display = "none";
+            })
+        }
+    </script>
+</body>
+
+</html>
